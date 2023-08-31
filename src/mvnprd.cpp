@@ -6,7 +6,7 @@ extern "C" {
 }
 
 
-// [[Rcpp::export]]
+// [[Rcpp::export(".mvnprd")]]
 NumericVector mvnprd(NumericVector a, NumericVector b, NumericVector bpd, float eps, IntegerVector inf, int ierc, float hinc) {
   int n = a.size();
   if(a.size() != b.size() && b.size() != bpd.size() && bpd.size() != inf.size()) {
