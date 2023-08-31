@@ -1,6 +1,9 @@
 #include "Rcpp.h"
 using namespace Rcpp;
 
+// First we'll declare the MVNPRD Fortran function
+// as mvnprd_ in an extern "C" linkage specification
+// making sure to have the arguments passed as pointers.
 extern "C" {
     void mvnprd_(float* a, float* b, float* bpd, float* eps, int* n, int* inf, int* ierc, float* hinc, float* prob, float* bound, int* ifault);
 }
