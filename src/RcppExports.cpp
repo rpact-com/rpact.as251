@@ -27,9 +27,29 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// mvstud
+NumericVector mvstud(int ndf, NumericVector a, NumericVector b, NumericVector bpd, float eps, IntegerVector inf, NumericVector d, int ierc, float hnc);
+RcppExport SEXP _rpact_as251_mvstud(SEXP ndfSEXP, SEXP aSEXP, SEXP bSEXP, SEXP bpdSEXP, SEXP epsSEXP, SEXP infSEXP, SEXP dSEXP, SEXP iercSEXP, SEXP hncSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< int >::type ndf(ndfSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type a(aSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type b(bSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type bpd(bpdSEXP);
+    Rcpp::traits::input_parameter< float >::type eps(epsSEXP);
+    Rcpp::traits::input_parameter< IntegerVector >::type inf(infSEXP);
+    Rcpp::traits::input_parameter< NumericVector >::type d(dSEXP);
+    Rcpp::traits::input_parameter< int >::type ierc(iercSEXP);
+    Rcpp::traits::input_parameter< float >::type hnc(hncSEXP);
+    rcpp_result_gen = Rcpp::wrap(mvstud(ndf, a, b, bpd, eps, inf, d, ierc, hnc));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_rpact_as251_mvnprd", (DL_FUNC) &_rpact_as251_mvnprd, 7},
+    {"_rpact_as251_mvstud", (DL_FUNC) &_rpact_as251_mvstud, 9},
     {NULL, NULL, 0}
 };
 

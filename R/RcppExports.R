@@ -5,3 +5,7 @@
     .Call(`_rpact_as251_mvnprd`, a, b, bpd, eps, inf, ierc, hinc)
 }
 
+.mvstud <- function(ndf, a, b, bpd, eps, inf, d, ierc, hnc) {
+    .Call(`_rpact_as251_mvstud`, ndf, a, b, bpd, eps, inf, d, ierc, hnc)
+}
+
