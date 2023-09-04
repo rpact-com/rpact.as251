@@ -10,7 +10,7 @@ name: R
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "tilljensen-r-cmd-check-action" , "main" ]
   pull_request:
     branches: [ "main" ]
 
