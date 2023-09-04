@@ -1,5 +1,5 @@
 
-#' @export 
+#' @export
 mvnprd <- function(A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
     if (length(A) != length(B) || length(B) != length(BPD) || length(BPD) != length(INF)) {
         stop("Input vectors must have the same length.")
@@ -13,7 +13,7 @@ mvnprd <- function(A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
     return(result)
 }
 
-#' @export 
+#' @export
 as251Normal <- function(lower, upper, sigma, inf, ..., eps = 1e-06, ierc = 1, hinc = 0) {
     bpd <- sigmaToBPD(sigma)
     n <- length(bpd)
@@ -21,4 +21,18 @@ as251Normal <- function(lower, upper, sigma, inf, ..., eps = 1e-06, ierc = 1, hi
     upper <- rep(upper, n)
     inf <- lower
     mvnprd(lower, upper, bpd, eps, inf, ierc, hinc)
+}
+
+#' @export
+mvstud <- function(NDF, A, B, BPD, EPS = 1e-06, INF, D, IERC = 1, HINC = 0) {
+  if (length(A) != length(B) || length(B) != length(BPD) || length(BPD) != length(INF) || length(INF) != length(D)) {#TODO re-evaluate length(INF) != length(D)
+    stop("Input vectors must have the same length.")
+  }
+
+  result <- .mvstud(NDF, A, B, BPD, EPS, INF, D, IERC, HINC)
+
+  if (result[3] != 0) {
+    warning("mvstud returned a fault.")
+  }
+  return(result)
 }
