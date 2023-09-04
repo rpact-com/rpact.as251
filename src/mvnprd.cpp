@@ -40,12 +40,13 @@ NumericVector mvnprd(NumericVector a, NumericVector b, NumericVector bpd, float 
 NumericVector mvstud(int ndf, NumericVector a, NumericVector b, NumericVector bpd, float eps, IntegerVector inf , NumericVector d, int ierc, float hnc) {
   int n = a.size();
 
-  //copy vectors into float arrays
-  float af[n];
-  float bf[n];
-  float bpdf[n];
-  float df[n];
+  //initialize float arrays
+  float* af = new float[n];
+  float* bf = new float[n];
+  float* bpdf = new float[n];
+  float* df = new float[n];
 
+  //copy vectors into float arrays
   for(int i = 0; i < n; i++) {
     af[i] = (float) a[i];
     bf[i] = (float) b[i];
@@ -53,10 +54,18 @@ NumericVector mvstud(int ndf, NumericVector a, NumericVector b, NumericVector bp
     df[i] = (float) d[i];
   }
 
+  //initialize result variables
   float prob = 0;
   float bnd = 0;
   int iflt = 0;
+
   mvstud_(&ndf, &(af[0]), &(bf[0]), &(bpdf[0]), &eps, &n, &(inf[0]), &(df[0]), &ierc, &hnc, &prob, &bnd, &iflt);
+
+  //free allocated memory
+  delete[] af;
+  delete[] bf;
+  delete[] bpdf;
+  delete[] df;
 
   return NumericVector::create(prob, bnd, iflt);
 }
