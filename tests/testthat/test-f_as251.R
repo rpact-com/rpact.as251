@@ -57,6 +57,19 @@ test_that("mvstud, sadmvn, and as251StudentT are equal", {
     expect_equal(x1[1], x3[1], tolerance = eps)
 })
 
+test_that("mvstud, sadmvn, and as251StudentT are equal", {
+    frac <- rep(0.7,2)
+    sigma <- sqrt(frac) %*% sqrt(t(frac))
+    diag(sigma) <- 1
+    rpact.as251::as251Normal(lower = -Inf, upper = 2, sigma = sigma)[1]
+    mnormt::sadmvn(lower = -Inf, upper = 2, mean = 0, varcov = sigma)
+    
+    
+    mnormt::sadmvt(lower = -Inf, upper = 2, mean = 0, S = sigma, df = 22)
+    rpact.as251::as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 22)[1]
+        
+})
+
 test_that("mvnprd, sadmvn, and as251Normal are equal", {
     A <- rep(2, 3)
     B <- rep(-3, 3)

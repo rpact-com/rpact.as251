@@ -29,10 +29,10 @@ mvnprd <- function(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
     }
 
     result <- .mvnprd(A, B, BPD, EPS, INF, IERC, HINC)
-    if (result[3] != 0) {
-        warning("mvnprd returned an an invalid result ", result[3])
-    }
-    return(result)
+    value <- result[1]
+    attr(value, "bound") <- result[2]
+    attr(value, "iFault") <- as.integer(result[3])
+    return(value)
 }
 
 #'
@@ -75,8 +75,10 @@ as251Normal <- function(
     inf[is.infinite(upper) & upper > 0] <- 0
     inf[is.infinite(lower) & lower < 0] <- 1
     
-    mvnprd(A = upper, B = lower, BPD = bpd, EPS = eps, INF = inf, 
+    result <- mvnprd(A = upper, B = lower, BPD = bpd, EPS = eps, INF = inf, 
         IERC = errorControl, HINC = intervalSimpsonsRule)
+    iFault <- attr(result, "iFault")
+    return(result)
 }
 
 #'
@@ -122,10 +124,10 @@ mvstud <- function(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
     }
 
     result <- .mvstud(NDF, A, B, BPD, D, EPS, INF, IERC, HINC)
-    if (result[3] != 0) {
-        warning("mvstud returned an an invalid result ", result[3])
-    }
-    return(result)
+    value <- result[1]
+    attr(value, "bound") <- result[2]
+    attr(value, "iFault") <- as.integer(result[3])
+    return(value)
 }
 
 #'
@@ -172,6 +174,8 @@ as251StudentT <- function(
     
     d <- rep(0.0, n)
     
-    mvstud(NDF = df, A = upper, B = lower, BPD = bpd, D = d, EPS = eps, INF = inf, 
+    result <- mvstud(NDF = df, A = upper, B = lower, BPD = bpd, D = d, EPS = eps, INF = inf, 
         IERC = errorControl, HINC = intervalSimpsonsRule)
+    iFault <- attr(result, "iFault") 
+    return(result)
 }
