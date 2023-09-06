@@ -14,6 +14,17 @@ TODO
 \references{
 TODO
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://www.rpact.org}
+  \item \url{https://www.rpact.com}
+  \item \url{https://github.com/rpact-com/rpact.as251}
+  \item \url{https://rpact-com.github.io/rpact.as251/}
+  \item Report bugs at \url{https://github.com/rpact-com/rpact.as251/issues}
+}
+
+}
 \author{
 Till Jensen, Friedrich Pahlke
 }

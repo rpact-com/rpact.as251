@@ -2,6 +2,7 @@
 
 export(as251Normal)
 export(mvnprd)
+export(mvstud)
 exportPattern("^[[:alpha:]]+")
 importFrom(Rcpp,evalCpp)
 useDynLib(rpact.as251, .registration = TRUE)
