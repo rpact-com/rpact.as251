@@ -4,7 +4,7 @@
 \alias{mvstud}
 \title{Algorithm AS 251.1  appl.statist. (1989), vol.38, no.3}
 \usage{
-mvstud(NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
+mvstud(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 }
 \arguments{
 \item{NDF}{Degrees of Freedom. Use 0 for infinite D.F.}

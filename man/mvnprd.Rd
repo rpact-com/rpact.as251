@@ -4,7 +4,7 @@
 \alias{mvnprd}
 \title{Algorithm AS 251.1  appl.statist. (1989), vol.38, no.3}
 \usage{
-mvnprd(A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0)
+mvnprd(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 }
 \arguments{
 \item{A}{Upper limits of integration. Array of N dimensions}

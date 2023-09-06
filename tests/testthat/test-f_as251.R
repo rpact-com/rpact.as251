@@ -15,6 +15,48 @@ test_that("mvnprd and sadmvn are equal", {
     expect_equal(x1[1], x2[1], tolerance = eps)
 })
 
+test_that("mvstud and sadmvn are equal", {
+    NDF <- 4
+    A <- rep(2, 3)
+    B <- rep(-3, 3)
+    BPD <- sqrt(c(0.3, 0.4, 0.5))
+    eps <- 1e-06
+    INF <- rep(2, 3)
+    ierc <- 0
+    hinc <- 0
+    D <- rep(0, 3)
+    x1 <- mvstud(NDF = NDF, A = A, B = B, BPD = BPD, D = D, EPS = eps, INF = INF, IERC = ierc, HINC = hinc)
+    
+    sigma <- BPD %*% t(BPD)
+    diag(sigma) <- 1
+    
+    x2 <- mnormt::sadmvt(lower = B, upper = A, mean = 0, S = sigma, df = NDF)
+    expect_equal(x1[1], x2[1], tolerance = eps)
+})
+
+test_that("mvstud, sadmvn, and as251StudentT are equal", {
+    NDF <- 4
+    A <- rep(2, 3)
+    B <- rep(-3, 3)
+    BPD <- sqrt(c(0.3, 0.4, 0.5))
+    eps <- 1e-06
+    INF <- rep(2, 3)
+    ierc <- 0
+    hinc <- 0
+    D <- rep(0, 3)
+    x1 <- mvstud(NDF = NDF, A = A, B = B, BPD = BPD, D = D, EPS = eps, INF = INF, IERC = ierc, HINC = hinc)
+    
+    sigma <- BPD %*% t(BPD)
+    diag(sigma) <- 1
+    
+    x2 <- mnormt::sadmvt(lower = B, upper = A, mean = 0, S = sigma, df = NDF)
+    
+    x3 <- as251StudentT(lower = -3, upper = 2, sigma = sigma, df = NDF, inf = INF, eps = eps, ierc = ierc, hinc = 0)
+    
+    expect_equal(x1[1], x2[1], tolerance = eps)
+    expect_equal(x1[1], x3[1], tolerance = eps)
+})
+
 test_that("mvnprd, sadmvn, and as251Normal are equal", {
     A <- rep(2, 3)
     B <- rep(-3, 3)

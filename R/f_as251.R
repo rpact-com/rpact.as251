@@ -22,7 +22,7 @@
 #' 
 #' @export
 #'  
-mvnprd <- function(A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
+mvnprd <- function(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
     if (length(A) != length(B) || length(B) != length(BPD) || length(BPD) != length(INF)) {
         stop("Illegal argument: input vectors must have the same length (",
             paste0(sort(unique(c(length(A), length(B), length(BPD), length(INF)))), collapse = " != "), ")")
@@ -33,6 +33,50 @@ mvnprd <- function(A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
         warning("mvnprd returned an an invalid result ", result[3])
     }
     return(result)
+}
+
+#'
+#' Algorithm AS 251.1  appl.statist. (1989), vol.38, no.3
+#' 
+#' For a multivariate normal vector with correlation structure
+#' defined by rho(i,j) = bpd(i) * bpd(j), computes the probability
+#' that the vector falls in a rectangle in n-space with error
+#' less than eps.
+#' 
+#' @param lower Lower limits of integration. Array of N dimensions
+#' @param upper Upper limits of integration. Array of N dimensions
+#' @param sigma Values defining correlation structure. Array of N dimensions
+#' @param eps desired accuracy.  Defaults to 1e-06
+#' @param errorControl error control. If set to 1, strict error control based on 
+#'        fourth derivative is used. If set to zero, error control based on halving intervals is used
+#' @param intervalSimpsonRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
+#' 
+#' @export
+#'  
+as251Normal <- function(
+    lower, upper, sigma, ..., 
+    eps = 1e-06, 
+    errorControl = c("strict", "halvingIntervals"), 
+    intervalSimpsonsRule = 0) {
+    
+    errorControl <- match.arg(errorControl)
+    if (errorControl == "strict") {
+        errorControl <- 1
+    } else {
+        errorControl <- 0
+    }
+    
+    bpd <- .sigmaToBPD(sigma)
+    n <- length(bpd)
+    lower <- rep(lower, n)
+    upper <- rep(upper, n)
+    
+    inf <- rep(2, n)
+    inf[is.infinite(upper) & upper > 0] <- 0
+    inf[is.infinite(lower) & lower < 0] <- 1
+    
+    mvnprd(A = upper, B = lower, BPD = bpd, EPS = eps, INF = inf, 
+        IERC = errorControl, HINC = intervalSimpsonsRule)
 }
 
 #'
@@ -71,7 +115,7 @@ mvnprd <- function(A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
 #' 
 #' @export
 #'  
-mvstud <- function(NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
+mvstud <- function(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
     if (length(A) != length(B) || length(B) != length(BPD) || length(BPD) != length(INF) || length(INF) != length(D)) {
         stop("Illegal argument: input vectors must have the same length (",
             paste0(sort(unique(c(length(A), length(B), length(BPD), length(INF), length(D)))), collapse = " != "), ")")
@@ -95,6 +139,7 @@ mvstud <- function(NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
 #' @param lower Lower limits of integration. Array of N dimensions
 #' @param upper Upper limits of integration. Array of N dimensions
 #' @param sigma Values defining correlation structure. Array of N dimensions
+#' @param df Degrees of Freedom. Use 0 for infinite D.F.
 #' @param eps desired accuracy.  Defaults to 1e-06
 #' @param errorControl error control. If set to 1, strict error control based on 
 #'        fourth derivative is used. If set to zero, error control based on halving intervals is used
@@ -102,10 +147,12 @@ mvstud <- function(NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
 #' 
 #' @export
 #'  
-as251Normal <- function(lower, upper, sigma, ..., 
-        eps = 1e-06, 
-        errorControl = c("strict", "halvingIntervals"), 
-        intervalSimpsonsRule = 0) {
+as251StudentT <- function(
+    lower, upper, sigma, ..., 
+    df,
+    eps = 1e-06, 
+    errorControl = c("strict", "halvingIntervals"), 
+    intervalSimpsonsRule = 0) {
     
     errorControl <- match.arg(errorControl)
     if (errorControl == "strict") {
@@ -123,6 +170,8 @@ as251Normal <- function(lower, upper, sigma, ...,
     inf[is.infinite(upper) & upper > 0] <- 0
     inf[is.infinite(lower) & lower < 0] <- 1
     
-    mvnprd(A = upper, B = lower, BPD = bpd, EPS = eps, INF = inf, 
+    d <- rep(0.0, n)
+    
+    mvstud(NDF = df, A = upper, B = lower, BPD = bpd, D = d, EPS = eps, INF = inf, 
         IERC = errorControl, HINC = intervalSimpsonsRule)
 }

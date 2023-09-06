@@ -101,9 +101,9 @@ NumericVector mvstud(
 	NumericVector a,
 	NumericVector b,
 	NumericVector bpd,
+	NumericVector d,
 	float eps,
 	IntegerVector inf,
-	NumericVector d,
 	int ierc,
 	float hnc) {
 
