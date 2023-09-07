@@ -76,8 +76,13 @@ as251Normal <- function(
     inf[is.infinite(lower) & lower < 0] <- 1
 
     result <- mvnprd(
-        A = upper, B = lower, BPD = bpd, EPS = eps, INF = inf,
-        IERC = errorControl, HINC = intervalSimpsonsRule
+        A = upper, 
+        B = lower, 
+        BPD = bpd, 
+        EPS = eps, 
+        INF = inf,
+        IERC = errorControl, 
+        HINC = intervalSimpsonsRule
     )
     iFault <- attr(result, "iFault")
     return(result)
@@ -178,8 +183,15 @@ as251StudentT <- function(
     d <- rep(0.0, n)
 
     result <- mvstud(
-        NDF = df, A = upper, B = lower, BPD = bpd, D = d, EPS = eps, INF = inf,
-        IERC = errorControl, HINC = intervalSimpsonsRule
+        NDF = df, 
+        A = upper, 
+        B = lower, 
+        BPD = bpd, 
+        D = d, 
+        EPS = eps, 
+        INF = inf,
+        IERC = errorControl, 
+        HINC = intervalSimpsonsRule
     )
     iFault <- attr(result, "iFault")
     return(result)
