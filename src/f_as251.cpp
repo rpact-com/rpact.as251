@@ -128,6 +128,7 @@ NumericVector mvstud(
   float bnd = 0;
   int iflt = 0;
 
+  // MVSTUD(NDF, A, B, BPD, ERRB, N, INF, D, IERC, HNC, PROB, BND, IFLT)
   mvstud_(&ndf, &(af[0]), &(bf[0]), &(bpdf[0]), &eps, &n, &(inf[0]), &(df[0]), &ierc, &hnc, &prob, &bnd, &iflt);
 
   // free allocated memory

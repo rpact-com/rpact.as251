@@ -50,7 +50,7 @@ mvnprd <- function(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
 #' @param eps desired accuracy.  Defaults to 1e-06
 #' @param errorControl error control. If set to 1, strict error control based on
 #'        fourth derivative is used. If set to zero, error control based on halving intervals is used
-#' @param intervalSimpsonRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
+#' @param intervalSimpsonsRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
 #'
 #' @export
 #'
@@ -76,8 +76,13 @@ as251Normal <- function(
     inf[is.infinite(lower) & lower < 0] <- 1
 
     result <- mvnprd(
-        A = upper, B = lower, BPD = bpd, EPS = eps, INF = inf,
-        IERC = errorControl, HINC = intervalSimpsonsRule
+        A = upper, 
+        B = lower, 
+        BPD = bpd, 
+        EPS = eps, 
+        INF = inf,
+        IERC = errorControl, 
+        HINC = intervalSimpsonsRule
     )
     iFault <- attr(result, "iFault")
     return(result)
@@ -114,7 +119,7 @@ as251Normal <- function(
 #' INF <- rep(2, length = N)
 #' BPD <- rep(sqrt(rho), length = N)
 #' D <- rep(0.0, length = N)
-#' result <- mvstud(0, A, B, BPD, INF, D)
+#' result <- mvstud(NDF = 0, A = A, B = B, BPD = BPD, INF = INF, D = D)
 #' result
 #'
 #' @export
@@ -149,7 +154,7 @@ mvstud <- function(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 #' @param eps desired accuracy.  Defaults to 1e-06
 #' @param errorControl error control. If set to 1, strict error control based on
 #'        fourth derivative is used. If set to zero, error control based on halving intervals is used
-#' @param intervalSimpsonRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
+#' @param intervalSimpsonsRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
 #'
 #' @export
 #'
@@ -178,8 +183,15 @@ as251StudentT <- function(
     d <- rep(0.0, n)
 
     result <- mvstud(
-        NDF = df, A = upper, B = lower, BPD = bpd, D = d, EPS = eps, INF = inf,
-        IERC = errorControl, HINC = intervalSimpsonsRule
+        NDF = df, 
+        A = upper, 
+        B = lower, 
+        BPD = bpd, 
+        D = d, 
+        EPS = eps, 
+        INF = inf,
+        IERC = errorControl, 
+        HINC = intervalSimpsonsRule
     )
     iFault <- attr(result, "iFault")
     return(result)
