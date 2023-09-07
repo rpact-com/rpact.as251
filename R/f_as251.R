@@ -50,7 +50,7 @@ mvnprd <- function(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
 #' @param eps desired accuracy.  Defaults to 1e-06
 #' @param errorControl error control. If set to 1, strict error control based on
 #'        fourth derivative is used. If set to zero, error control based on halving intervals is used
-#' @param intervalSimpsonRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
+#' @param intervalSimpsonsRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
 #'
 #' @export
 #'
@@ -149,7 +149,7 @@ mvstud <- function(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 #' @param eps desired accuracy.  Defaults to 1e-06
 #' @param errorControl error control. If set to 1, strict error control based on
 #'        fourth derivative is used. If set to zero, error control based on halving intervals is used
-#' @param intervalSimpsonRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
+#' @param intervalSimpsonsRule Interval width for Simpson's rule. Value of zero caused a default .24 to be used
 #'
 #' @export
 #'
