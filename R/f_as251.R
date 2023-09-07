@@ -114,7 +114,7 @@ as251Normal <- function(
 #' INF <- rep(2, length = N)
 #' BPD <- rep(sqrt(rho), length = N)
 #' D <- rep(0.0, length = N)
-#' result <- mvstud(0, A, B, BPD, INF, D)
+#' result <- mvstud(NDF = 0, A = A, B = B, BPD = BPD, INF = INF, D = D)
 #' result
 #'
 #' @export
