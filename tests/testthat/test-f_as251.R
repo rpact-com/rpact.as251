@@ -73,6 +73,9 @@ test_that("binary case: sadmvn and as251StudentT are equal", {
     sigma <- sqrt(frac) %*% sqrt(t(frac))
     diag(sigma) <- 1
     x1 <- mnormt::sadmvt(lower = -Inf, upper = 2, mean = 0, S = sigma, df = 22, abseps = eps)
+    
+    #rpact.as251::as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 100, eps = 1e-06)
+    
     x2 <- rpact.as251::as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 22, eps = eps)[1]
     expect_equal(x1, x2, tolerance = eps)
 })
