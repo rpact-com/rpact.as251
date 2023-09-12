@@ -26,10 +26,10 @@ as251StudentT(
 
 \item{eps}{desired accuracy.  Defaults to 1e-06}
 
-\item{errorControl}{error control. If set to 1, strict error control based on 
+\item{errorControl}{error control. If set to 1, strict error control based on
 fourth derivative is used. If set to zero, error control based on halving intervals is used}
 
-\item{intervalSimpsonRule}{Interval width for Simpson's rule. Value of zero caused a default .24 to be used}
+\item{intervalSimpsonsRule}{Interval width for Simpson's rule. Value of zero caused a default .24 to be used}
 }
 \description{
 For a multivariate normal vector with correlation structure

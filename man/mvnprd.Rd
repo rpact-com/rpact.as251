@@ -15,13 +15,13 @@ mvnprd(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 
 \item{EPS}{desired accuracy.  Defaults to 1e-06}
 
-\item{INF}{Determines where integration is done to infinity. Array of N dimensions. 
-Valid values for INF(I): 
-  0 = c(B(I), Inf), 
-  1 = c(-Inf, A(I)), 
+\item{INF}{Determines where integration is done to infinity. Array of N dimensions.
+Valid values for INF(I):
+  0 = c(B(I), Inf),
+  1 = c(-Inf, A(I)),
   2 = c(B(I), A(I))}
 
-\item{IERC}{error control. If set to 1, strict error control based on 
+\item{IERC}{error control. If set to 1, strict error control based on
 fourth derivative is used.  If set to zero, error control based on halving intervals is used}
 
 \item{HINC}{Interval width for Simpson's rule. Value of zero caused a default .24 to be used}

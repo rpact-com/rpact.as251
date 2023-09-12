@@ -58,6 +58,15 @@ test_that("mvstud, sadmvn, and as251StudentT are equal", {
 })
 
 test_that("binary case: sadmvn and as251Normal are equal", {
+        
+    library(tictoc)    
+    frac <- rep(0.7,2)
+    sigma <- sqrt(frac) %*% sqrt(t(frac))
+    diag(sigma) <- 1
+    tic()
+    rpact.as251::as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 500000) 
+    toc()
+        
     eps <- 1e-06
     frac <- rep(0.7, 2)
     sigma <- sqrt(frac) %*% sqrt(t(frac))

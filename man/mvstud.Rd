@@ -19,13 +19,13 @@ mvstud(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 
 \item{EPS}{desired accuracy.  Defaults to 1e-06}
 
-\item{INF}{Determines where integration is done to infinity. Array of N dimensions. 
-Valid values for INF(I): 
-  0 = c(B(I), Inf), 
-  1 = c(-Inf, A(I)), 
+\item{INF}{Determines where integration is done to infinity. Array of N dimensions.
+Valid values for INF(I):
+  0 = c(B(I), Inf),
+  1 = c(-Inf, A(I)),
   2 = c(B(I), A(I))}
 
-\item{IERC}{error control. If set to 1, strict error control based on 
+\item{IERC}{error control. If set to 1, strict error control based on
 fourth derivative is used.  If set to zero, error control based on halving intervals is used}
 
 \item{HINC}{Interval width for Simpson's rule. Value of zero caused a default .24 to be used}
@@ -39,12 +39,12 @@ less than eps.
 \examples{
 N <- 3
 rho <- 0.5
-B   <- rep(-5.0,      length=N)
-A   <- rep(5.0,       length=N)
-INF <- rep(2,         length=N)
-BPD <- rep(sqrt(rho), length=N)
-D   <- rep(0.0,       length=N)
-result <- mvstud(0, A, B, BPD, INF, D)
+B <- rep(-5.0, length = N)
+A <- rep(5.0, length = N)
+INF <- rep(2, length = N)
+BPD <- rep(sqrt(rho), length = N)
+D <- rep(0.0, length = N)
+result <- mvstud(NDF = 0, A = A, B = B, BPD = BPD, INF = INF, D = D)
 result
 
 }
