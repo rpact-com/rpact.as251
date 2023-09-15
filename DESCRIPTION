@@ -15,7 +15,14 @@ Authors@R: c(
     	email = "friedrich.pahlke@rpact.com",
     	comment = c(ORCID = "0000-0003-2105-2582"), 
     	role = c("aut", "cre")
-    ))
+    ),
+    person(
+		given = "Gernot", 
+		family = "Wassmer", 
+		email = "gernot.wassmer@rpact.com", 
+		comment = c(ORCID = "0000-0001-9397-1794"), 
+		role = c("ctb")
+	))
 Description: Multivariate Normal Distribution with Product Correlation Structure. Charles Dunnett, Algorithm AS 251.1 Appl.Statist. (1989), Vol.38, No.3
 <https://doi.org/10.2307/2347754>
 License: LGPL-3
