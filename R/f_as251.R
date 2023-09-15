@@ -6,6 +6,7 @@
 #' that the vector falls in a rectangle in n-space with error
 #' less than eps.
 #'
+#' @inheritParams param_three_dots
 #' @param A Upper limits of integration. Array of N dimensions
 #' @param B Lower limits of integration. Array of N dimensions
 #' @param BPD Values defining correlation structure. Array of N dimensions
@@ -47,6 +48,7 @@ mvnprd <- function(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
 #' @param lower Lower limits of integration. Array of N dimensions
 #' @param upper Upper limits of integration. Array of N dimensions
 #' @param sigma Values defining correlation structure. Array of N dimensions
+#' @inheritParams param_three_dots
 #' @param eps desired accuracy.  Defaults to 1e-06
 #' @param errorControl error control. If set to 1, strict error control based on
 #'        fourth derivative is used. If set to zero, error control based on halving intervals is used
@@ -96,6 +98,7 @@ as251Normal <- function(
 #' that the vector falls in a rectangle in n-space with error
 #' less than eps.
 #'
+#' @inheritParams param_three_dots
 #' @param NDF Degrees of Freedom. Use 0 for infinite D.F.
 #' @param A Upper limits of integration. Array of N dimensions
 #' @param B Lower limits of integration. Array of N dimensions
@@ -150,6 +153,7 @@ mvstud <- function(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 #' @param lower Lower limits of integration. Array of N dimensions
 #' @param upper Upper limits of integration. Array of N dimensions
 #' @param sigma Values defining correlation structure. Array of N dimensions
+#' @inheritParams param_three_dots
 #' @param df Degrees of Freedom. Use 0 for infinite D.F.
 #' @param eps desired accuracy.  Defaults to 1e-06
 #' @param errorControl error control. If set to 1, strict error control based on
