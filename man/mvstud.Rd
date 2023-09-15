@@ -7,6 +7,9 @@
 mvstud(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 }
 \arguments{
+\item{...}{Ensures that all arguments (starting from the "...") are to be named and
+that a warning will be displayed if unknown arguments are passed.}
+
 \item{NDF}{Degrees of Freedom. Use 0 for infinite D.F.}
 
 \item{A}{Upper limits of integration. Array of N dimensions}

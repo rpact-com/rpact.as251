@@ -7,6 +7,9 @@
 mvnprd(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 }
 \arguments{
+\item{...}{Ensures that all arguments (starting from the "...") are to be named and
+that a warning will be displayed if unknown arguments are passed.}
+
 \item{A}{Upper limits of integration. Array of N dimensions}
 
 \item{B}{Lower limits of integration. Array of N dimensions}

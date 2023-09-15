@@ -22,6 +22,9 @@ as251StudentT(
 
 \item{sigma}{Values defining correlation structure. Array of N dimensions}
 
+\item{...}{Ensures that all arguments (starting from the "...") are to be named and
+that a warning will be displayed if unknown arguments are passed.}
+
 \item{df}{Degrees of Freedom. Use 0 for infinite D.F.}
 
 \item{eps}{desired accuracy.  Defaults to 1e-06}

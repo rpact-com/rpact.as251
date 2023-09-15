@@ -21,6 +21,9 @@ as251Normal(
 
 \item{sigma}{Values defining correlation structure. Array of N dimensions}
 
+\item{...}{Ensures that all arguments (starting from the "...") are to be named and
+that a warning will be displayed if unknown arguments are passed.}
+
 \item{eps}{desired accuracy.  Defaults to 1e-06}
 
 \item{errorControl}{error control. If set to 1, strict error control based on

@@ -58,20 +58,16 @@ test_that("mvstud, sadmvn, and as251StudentT are equal", {
 })
 
 test_that("binary case: sadmvn and as251Normal are equal", {
-        
-    library(tictoc)    
     frac <- rep(0.7,2)
     sigma <- sqrt(frac) %*% sqrt(t(frac))
     diag(sigma) <- 1
-    tic()
-    rpact.as251::as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 500000) 
-    toc()
+    as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 500000) 
         
     eps <- 1e-06
     frac <- rep(0.7, 2)
     sigma <- sqrt(frac) %*% sqrt(t(frac))
     diag(sigma) <- 1
-    x1 <- rpact.as251::as251Normal(lower = -Inf, upper = 2, sigma = sigma, eps = eps)[1]
+    x1 <- as251Normal(lower = -Inf, upper = 2, sigma = sigma, eps = eps)[1]
     x2 <- mnormt::sadmvn(lower = -Inf, upper = 2, mean = 0, varcov = sigma, abseps = eps)
     expect_equal(x1, x2, tolerance = eps)
 })
@@ -83,9 +79,9 @@ test_that("binary case: sadmvn and as251StudentT are equal", {
     diag(sigma) <- 1
     x1 <- mnormt::sadmvt(lower = -Inf, upper = 2, mean = 0, S = sigma, df = 22, abseps = eps)
     
-    #rpact.as251::as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 100, eps = 1e-06)
+    #as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 100, eps = 1e-06)
     
-    x2 <- rpact.as251::as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 22, eps = eps)[1]
+    x2 <- as251StudentT(lower = -Inf, upper = 2, sigma = sigma, df = 22, eps = eps)[1]
     expect_equal(x1, x2, tolerance = eps)
 })
 
