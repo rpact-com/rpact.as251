@@ -1,6 +1,13 @@
 #'
-#' Algorithm AS 251.1  appl.statist. (1989), vol.38, no.3
+#' @title 
+#' Original Algorithm AS 251: Normal Distribution
 #'
+#' @description 
+#' Calculates the Multivariate Normal Distribution with Product Correlation Structure published 
+#' by Charles Dunnett, Algorithm AS 251.1 Appl.Statist. (1989), Vol.38, No.3 <https://doi.org/10.2307/2347754>.
+#'
+#' @details 
+#' This is a wrapper function for the original Fortran 77 code. 
 #' For a multivariate normal vector with correlation structure
 #' defined by RHO(I,J) = BPD(I) * BPD(J), computes the probability
 #' that the vector falls in a rectangle in n-space with error
@@ -38,12 +45,20 @@ mvnprd <- function(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
 }
 
 #'
-#' Algorithm AS 251.1  appl.statist. (1989), vol.38, no.3
+#' @title 
+#' Algorithm AS 251: Normal Distribution
+#' 
+#' @description 
+#' Calculates the Multivariate Normal Distribution with Product Correlation Structure published 
+#' by Charles Dunnett, Algorithm AS 251.1 Appl.Statist. (1989), Vol.38, No.3 <https://doi.org/10.2307/2347754>.
 #'
+#' @details 
 #' For a multivariate normal vector with correlation structure
 #' defined by rho(i,j) = bpd(i) * bpd(j), computes the probability
 #' that the vector falls in a rectangle in n-space with error
 #' less than eps.
+#' 
+#' This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvstud()}}.
 #'
 #' @param lower Lower limits of integration. Array of N dimensions
 #' @param upper Upper limits of integration. Array of N dimensions
@@ -91,8 +106,15 @@ as251Normal <- function(
 }
 
 #'
-#' Algorithm AS 251.1  appl.statist. (1989), vol.38, no.3
+#' @title 
+#' Original Algorithm AS 251: Student T Distribution
 #'
+#' @description 
+#' Calculates the Multivariate Normal Distribution with Product Correlation Structure published 
+#' by Charles Dunnett, Algorithm AS 251.1 Appl.Statist. (1989), Vol.38, No.3 <https://doi.org/10.2307/2347754>.
+#'
+#' @details 
+#' This is a wrapper function for the original Fortran 77 code. 
 #' For a multivariate normal vector with correlation structure
 #' defined by RHO(I,J) = BPD(I) * BPD(J), computes the probability
 #' that the vector falls in a rectangle in n-space with error
@@ -116,11 +138,11 @@ as251Normal <- function(
 #'
 #' @examples
 #' N <- 3
-#' rho <- 0.5
+#' RHO <- 0.5
 #' B <- rep(-5.0, length = N)
 #' A <- rep(5.0, length = N)
 #' INF <- rep(2, length = N)
-#' BPD <- rep(sqrt(rho), length = N)
+#' BPD <- rep(sqrt(RHO), length = N)
 #' D <- rep(0.0, length = N)
 #' result <- mvstud(NDF = 0, A = A, B = B, BPD = BPD, INF = INF, D = D)
 #' result
@@ -143,12 +165,20 @@ mvstud <- function(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 }
 
 #'
-#' Algorithm AS 251.1  appl.statist. (1989), vol.38, no.3
+#' @title 
+#' Algorithm AS 251: Student T Distribution
+#' 
+#' @description 
+#' Calculates the Multivariate Normal Distribution with Product Correlation Structure published 
+#' by Charles Dunnett, Algorithm AS 251.1 Appl.Statist. (1989), Vol.38, No.3 <https://doi.org/10.2307/2347754>.
 #'
+#' @details 
 #' For a multivariate normal vector with correlation structure
 #' defined by rho(i,j) = bpd(i) * bpd(j), computes the probability
 #' that the vector falls in a rectangle in n-space with error
 #' less than eps.
+#' 
+#' This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvstud()}}.
 #'
 #' @param lower Lower limits of integration. Array of N dimensions
 #' @param upper Upper limits of integration. Array of N dimensions

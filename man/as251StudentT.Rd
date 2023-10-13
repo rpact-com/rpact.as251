@@ -2,7 +2,7 @@
 % Please edit documentation in R/f_as251.R
 \name{as251StudentT}
 \alias{as251StudentT}
-\title{Algorithm AS 251.1  appl.statist. (1989), vol.38, no.3}
+\title{Algorithm AS 251: Student T Distribution}
 \usage{
 as251StudentT(
   lower,
@@ -35,8 +35,14 @@ fourth derivative is used. If set to zero, error control based on halving interv
 \item{intervalSimpsonsRule}{Interval width for Simpson's rule. Value of zero caused a default .24 to be used}
 }
 \description{
+Calculates the Multivariate Normal Distribution with Product Correlation Structure published 
+by Charles Dunnett, Algorithm AS 251.1 Appl.Statist. (1989), Vol.38, No.3 <https://doi.org/10.2307/2347754>.
+}
+\details{
 For a multivariate normal vector with correlation structure
 defined by rho(i,j) = bpd(i) * bpd(j), computes the probability
 that the vector falls in a rectangle in n-space with error
 less than eps.
+
+This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvstud()}}.
 }

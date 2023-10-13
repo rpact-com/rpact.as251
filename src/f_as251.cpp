@@ -58,26 +58,6 @@ NumericVector mvnprd(
   return NumericVector::create(prob, bound, ifault);
 }
 
-// SUBROUTINE MVNPRD(     A, B, BPD, EPS,  N, INF,    IERC, HINC, PROB, BOUND, IFAULT)
-// SUBROUTINE MVSTUD(NDF, A, B, BPD, ERRB, N, INF, D, IERC, HNC,  PROB, BND,   IFLT)
-
-/**
-\item{NDF}{ Degrees of Freedom.  Use 0 for infinite D.F. }
-\item{A}{ Upper limits of integration.  Array of N dimensions }
-\item{B}{ Lower limits of integration.  Array of N dimensions }
-\item{BPD}{ Values defining correlation structure.  Array of N dimensions }
-\item{INF}{ Determines where integration is done to infinity.  Array of
-            N dimensions.  Valid values for INF(I): 0=(B(I), inf),
-            1=(-inf, A(I)), 2=(B(I),A(I)) }
-\item{D}{ Non-Centrality Vector }
-\item{EPS}{ desired accuracy.  Defaults to 1e-04 }
-\item{IERC}{ error control.  If set to 1, strict error control based on
-             fourth derivative is used.  If set to zero, error control based
-             on halving intervals is used }
-\item{HINC}{ Interval width for Simpson's rule.  Value of zero caused
-             a default .24 to be used }
-*/
-
 extern "C" {
     void mvstud_(
     	int* ndf,
