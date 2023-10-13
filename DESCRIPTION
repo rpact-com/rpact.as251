@@ -1,8 +1,8 @@
 Package: rpact.as251
 Type: Package
 Title: Algorithm AS 251: Multivariate Normal Probability Integrals with Product Correlation Structure
-Version: 0.1.4
-Date: 2023-09-15
+Version: 0.1.5
+Date: 2023-10-13
 Authors@R: c(
     person(
     	given = "Till", 
