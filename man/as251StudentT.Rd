@@ -44,5 +44,5 @@ defined by rho(i,j) = bpd(i) * bpd(j), computes the probability
 that the vector falls in a rectangle in n-space with error
 less than eps.
 
-This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvstud()}}.
+This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvstud}}.
 }

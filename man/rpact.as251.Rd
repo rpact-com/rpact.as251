@@ -10,7 +10,7 @@ This R package integrates Charles Dunnetts AS 251 FORTRAN 77 algorithm from the 
 "Multivariate Normal Probability Integrals with Product Correlation Structure" in R using Rcpp.
 }
 \details{
-TODO
+Functions that call the original AS 251 algorithm and functions optimized for `rpact` are provided.
 }
 \references{
 Dunnett, C. W. (1989). Algorithm AS 251: Multivariate Normal Probability Integrals with Product 

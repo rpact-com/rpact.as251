@@ -58,7 +58,7 @@ mvnprd <- function(..., A, B, BPD, EPS = 1e-06, INF, IERC = 1, HINC = 0) {
 #' that the vector falls in a rectangle in n-space with error
 #' less than eps.
 #' 
-#' This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvstud()}}.
+#' This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvnprd}}.
 #'
 #' @param lower Lower limits of integration. Array of N dimensions
 #' @param upper Upper limits of integration. Array of N dimensions
@@ -178,7 +178,7 @@ mvstud <- function(..., NDF, A, B, BPD, D, EPS = 1e-06, INF, IERC = 1, HINC = 0)
 #' that the vector falls in a rectangle in n-space with error
 #' less than eps.
 #' 
-#' This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvstud()}}.
+#' This function calculates the `bdp` value from `sigma`, determines the right `inf` value and calls \code{\link{mvstud}}.
 #'
 #' @param lower Lower limits of integration. Array of N dimensions
 #' @param upper Upper limits of integration. Array of N dimensions

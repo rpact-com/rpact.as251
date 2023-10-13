@@ -48,7 +48,7 @@ NumericVector mvnprd(
   float bound = 0;
   int ifault = 0;
 
-  mvnprd_(&(af[0]), &(bf[0]), &(bpdf[0]), &eps, &n, &(inf[0]), &ierc, &hinc, &prob, &bound, &ifault);
+  mvnprd_(&(af[0]), &(bf[0]), &(bpdf[0]), &eps, &n, (int*) &(inf[0]), &ierc, &hinc, &prob, &bound, &ifault);
 
   // free allocated memory
   delete[] af;
@@ -109,7 +109,7 @@ NumericVector mvstud(
   int iflt = 0;
 
   // MVSTUD(NDF, A, B, BPD, ERRB, N, INF, D, IERC, HNC, PROB, BND, IFLT)
-  mvstud_(&ndf, &(af[0]), &(bf[0]), &(bpdf[0]), &eps, &n, &(inf[0]), &(df[0]), &ierc, &hnc, &prob, &bnd, &iflt);
+  mvstud_(&ndf, &(af[0]), &(bf[0]), &(bpdf[0]), &eps, &n, (int*) &(inf[0]), &(df[0]), &ierc, &hnc, &prob, &bnd, &iflt);
 
   // free allocated memory
   delete[] af;
