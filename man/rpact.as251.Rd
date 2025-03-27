@@ -2,8 +2,8 @@
 % Please edit documentation in R/pkgname.R
 \docType{package}
 \name{rpact.as251}
-\alias{rpact.as251}
 \alias{rpact.as251-package}
+\alias{rpact.as251}
 \title{rpact AS 251}
 \description{
 This R package integrates Charles Dunnetts AS 251 FORTRAN 77 algorithm from the journal article 
